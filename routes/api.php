@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::group(
+    [
+        'prefix' => 'v1',
+        'namespace' => 'App\Http\Controllers\Api\\'
+    ],
+    static function () {
+        Route::post('/frontend/page-visit', 'Api\PageVisitController@store')->name('api.page-visit.store');
+        Route::post('/frontend/contact-us', 'Api\PageVisitController@store')->name('api.page-visit.store');
+        Route::post('/frontend/subscribe', 'Api\PageVisitController@store')->name('api.page-visit.store');
+    }
+);
