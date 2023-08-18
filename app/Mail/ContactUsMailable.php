@@ -19,7 +19,7 @@ class ContactUsMailable extends Mailable
     public function __construct(
         public readonly string $name,
         public readonly string $email,
-        public readonly string $subject,
+        public readonly string $mailSubject,
         public readonly string $message,
     ) { }
 
@@ -29,7 +29,7 @@ class ContactUsMailable extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: config('app.prefix').": Message from Contact Form",
+            subject: config('app.frontend_name').": Message from Contact Form",
         );
     }
 

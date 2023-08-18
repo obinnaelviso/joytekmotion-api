@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Actions\ContactUsAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactUsRequest;
-use App\Models\ContactUs;
-use Illuminate\Http\Request;
 
 class ContactUsController extends Controller
 {
@@ -14,15 +13,15 @@ class ContactUsController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function __invoke(ContactUsRequest $request)
+    public function __invoke(ContactUsRequest $request, ContactUsAction $contactUsAction)
     {
-        ContactUs::create($request->all());
-
-        // Send email to admin
-        // Mail::to(config('mail.from.address'))->send(new ContactUsMail($request->all()));
+        $contactUsAction->execute(
+            new \App\Models\ContactUs(),
+            new \App\DTOs\ContactUsData( ... $request->validated())
+        );
 
         return response()->json([
-            'message' => 'Thank you for contacting us. We will get back to you soon.'
+            'message' => 'Your message has been sent successfully.',
         ]);
     }
 }

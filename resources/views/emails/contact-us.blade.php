@@ -1,12 +1,11 @@
 <x-mail::message>
 ## New Message Contact Form
 
-**NAME:** \
-**EMAIL ADDRESS:** \
-**SUBJECT:** \
+**NAME:** {{ $name }} \
+**EMAIL ADDRESS:** {{ $email }} \
+**SUBJECT:** {{ $mailSubject }} \
 **MESSAGE:** \
-
-
+{{ $message }}
 
 Thanks,<br>
 {{ config('app.frontend_name') }}
