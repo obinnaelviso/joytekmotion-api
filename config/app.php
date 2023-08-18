@@ -17,6 +17,8 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'frontend_name' => env('APP_FRONTEND_NAME', 'Laravel Frontend'),
+    'prefix' => env('APP_PREFIX', 'LVL'),
 
     /*
     |--------------------------------------------------------------------------

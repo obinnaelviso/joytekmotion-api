@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('frontend_pages', function (Blueprint $table) {
+        Schema::create('email_subscribers', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->string('route')->unique();
+            $table->string('email')->unique();
+            $table->enum('status', ["pending","subscribed","unsubscribed"]);
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('frontend_pages');
+        Schema::dropIfExists('email_subscribers');
     }
 };

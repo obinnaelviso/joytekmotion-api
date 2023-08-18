@@ -17,11 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::group(
     [
         'prefix' => 'v1',
-        'namespace' => 'App\Http\Controllers\Api\\'
+        'namespace' => 'App\Http\Controllers\Api\V1',
+        'as' => 'api.v1.'
     ],
     static function () {
-        Route::post('/frontend/page-visit', 'Api\PageVisitController@store')->name('api.page-visit.store');
-        Route::post('/frontend/contact-us', 'Api\PageVisitController@store')->name('api.page-visit.store');
-        Route::post('/frontend/subscribe', 'Api\PageVisitController@store')->name('api.page-visit.store');
+        // Route::post('/frontend/page-visit', 'PageVisitController@store')->name('page-visit.store');
+        Route::post('/contact-us', ContactUsController::class)->name('contact-us');
+        // Route::post('/frontend/subscribe', 'PageVisitController@store')->name('subscribe');
     }
 );
